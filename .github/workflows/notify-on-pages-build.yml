@@ -10,9 +10,26 @@ jobs:
   notify:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: ✅ Notify on Discord
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get recent commit info
+        id: commit
+        run: |
+          echo "SHA=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+          echo "URL=https://github.com/${{ github.repository }}/commit/$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Get list of changed files
+        id: changes
+        run: |
+          CHANGED=$(git diff-tree --no-commit-id --name-only -r ${{ steps.commit.outputs.SHA }})
+          echo "FILES=$CHANGED" >> $GITHUB_OUTPUT
+
+      - name: Notify on Discord
+        env:
+          WEBHOOK_URL: https://discord.com/api/webhooks/1372272241219338300/tVhBkjEM8jNofPecLR-sVqgKJllUZSy90tl86MRFR3Un7p-P_CiitTn24j-ynOwG-nQL
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"content\": \"✅ GitHub Pages successfully deployed: https://therealorco.github.io/Website/\"}" \
-          https://discord.com/api/webhooks/1372272241219338300/tVhBkjEM8jNofPecLR-sVqgKJllUZSy90tl86MRFR3Un7p-P_CiitTn24j-ynOwG-nQL
+          -d "{\"content\": \"✅ **GitHub Pages deployed!**\n🔗 Commit: [View](${{ steps.commit.outputs.URL }})\n📄 Changed files:\n\`\`\`\n${{ steps.changes.outputs.FILES }}\n\`\`\`\"}" $WEBHOOK_URL
