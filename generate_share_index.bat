@@ -24,6 +24,7 @@ if not exist "%folder%" (
     echo         a {color:#90caf9;text-decoration:none;font-size:1.1rem;}
     echo         a:hover {text-decoration:underline;}
     echo         .footer {text-align:center;margin-top:3rem;font-size:0.9rem;color:#888;}
+    echo         .back-to-home a {color: #ffffff;text-decoration: none;font-size: 1.2rem;border: 2px solid #ff9900;padding: 0.5rem 1rem;border-radius: 5px;transition: background-color 0.3s ease;}
     echo     ^</style^>
     echo ^</head^>
     echo ^<body^>
@@ -42,6 +43,7 @@ for %%F in ("%folder%\*") do (
 >> "%output%" (
     echo     ^</ul^>
     echo     ^<div class="footer"^>Generated automatically via GitHub Actions^</div^>
+    echo     ^<div class="back-to-home"^>^<a href="https://therealorco.org">Back to Home</a^>^</div^>
     echo ^</body^>
     echo ^</html^>
 )
