@@ -14,8 +14,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: List directory contents
+        run: dir
+
       - name: Run batch script to generate index.html
-        run: generate_share_index.bat
+        run: .\generate_share_index.bat
 
       - name: Commit and push updated index.html
         run: |
