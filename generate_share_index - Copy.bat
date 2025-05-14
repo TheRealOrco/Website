@@ -1,19 +1,14 @@
-@echo on
+@echo off
 setlocal EnableDelayedExpansion
-
-echo Current directory:
-cd
-
-dir
 
 set "folder=share"
 set "output=%folder%\index.html"
 
 rem Check if the folder exists
 if not exist "%folder%" (
-    echo Error: Folder "%folder%" does not exist.
-    pause
-    exit /b 1
+    echo Warning: Folder "%folder%" does not exist.
+    echo ^<html^><body^><h1^>No files found</h1^></body^></html^> > "%output%"
+    goto :eof
 )
 
 > "%output%" (
@@ -25,7 +20,9 @@ if not exist "%folder%" (
     echo     ^<h1^>Files in /share/^</h1^>
     echo     ^<ul^>
 
+    rem Loop through all files in the folder (ignore directories)
     for %%F in ("%folder%\*") do (
+        rem Skip directories and the index.html itself
         if /I not "%%~nxF"=="index.html" (
             if not "%%~aF"=="d" (
                 echo         ^<li^>^<a href="%%~nxF"^>%%~nxF^</a^>^</li^>
