@@ -30,14 +30,5 @@ jobs:
           git add share/index.html
           git commit -m "Auto-update share/index.html via batch script" || echo "No changes to commit"
           git push
-  notify-on-deploy:
-    name: 🔔 Notify on GitHub Pages Deployment
-    needs: pages-build-deployment
-    runs-on: windows-latest
-    steps:
-      - name: ✅ Send Discord notification
-        shell: cmd
-        run: |
-          curl -X POST -H "Content-Type: application/json" -d "{\"content\": \"✅ GitHub Pages is live at https://www.therealorco.org/\"}" https://discord.com/api/webhooks/1372272241219338300/tVhBkjEM8jNofPecLR-sVqgKJllUZSy90tl86MRFR3Un7p-P_CiitTn24j-ynOwG-nQL
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
