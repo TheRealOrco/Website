@@ -4,33 +4,44 @@ setlocal EnableDelayedExpansion
 set "folder=share"
 set "output=%folder%\index.html"
 
-rem Check if the folder exists
 if not exist "%folder%" (
-    echo Warning: Folder "%folder%" does not exist.
-    echo ^<html^><body^><h1^>No files found</h1^></body^></html^> > "%output%"
+    echo Folder "%folder%" does not exist.
     goto :eof
 )
 
 > "%output%" (
-    echo ^<html^>
+    echo ^<!DOCTYPE html^>
+    echo ^<html lang="en"^>
     echo ^<head^>
+    echo     ^<meta charset="UTF-8"^>
     echo     ^<title^>Shared Files^</title^>
+    echo     ^<style^>
+    echo         body {background-color:#121212;color:#e0e0e0;font-family:"Segoe UI",Tahoma,Verdana,sans-serif;margin:0;padding:2rem;}
+    echo         h1 {text-align:center;margin-bottom:2rem;color:#fff;}
+    echo         ul {list-style:none;padding:0;max-width:600px;margin:auto;}
+    echo         li {background:#1e1e1e;margin:0.5rem 0;padding:1rem;border-radius:8px;transition:background 0.2s;}
+    echo         li:hover {background:#333;}
+    echo         a {color:#90caf9;text-decoration:none;font-size:1.1rem;}
+    echo         a:hover {text-decoration:underline;}
+    echo         .footer {text-align:center;margin-top:3rem;font-size:0.9rem;color:#888;}
+    echo     ^</style^>
     echo ^</head^>
     echo ^<body^>
-    echo     ^<h1^>Files in /share/^</h1^>
+    echo     ^<h1^>📂 Shared Files^</h1^>
     echo     ^<ul^>
+)
 
-    rem Loop through all files in the folder (ignore directories)
-    for %%F in ("%folder%\*") do (
-        rem Skip directories and the index.html itself
-        if /I not "%%~nxF"=="index.html" (
-            if not "%%~aF"=="d" (
-                echo         ^<li^>^<a href="%%~nxF"^>%%~nxF^</a^>^</li^>
-            )
+for %%F in ("%folder%\*") do (
+    if /I not "%%~nxF"=="index.html" (
+        if not "%%~aF"=="d" (
+            echo         ^<li^>^<a href="%%~nxF"^>%%~nxF^</a^>^</li^> >> "%output%"
         )
     )
+)
 
+>> "%output%" (
     echo     ^</ul^>
+    echo     ^<div class="footer"^>Generated automatically via GitHub Actions^</div^>
     echo ^</body^>
     echo ^</html^>
 )
