@@ -30,5 +30,16 @@ jobs:
           git add share/index.html
           git commit -m "Auto-update share/index.html via batch script" || echo "No changes to commit"
           git push
+      - name: ✅ Notify deployment complete
+        run: echo "Deployment completed for Website repo"
+
+# OR use something like curl to send webhook:
+
+      - name: Send webhook (Discord/Slack/Email)
+        run: |
+         curl -X POST -H "Content-Type: application/json" \
+        -d "{\"content\": \"✅ GitHub Pages site updated and deployed!\"}" \
+        https://discord.com/api/webhooks/1372272241219338300/tVhBkjEM8jNofPecLR-sVqgKJllUZSy90tl86MRFR3Un7p-P_CiitTn24j-ynOwG-nQL
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
