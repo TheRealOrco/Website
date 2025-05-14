@@ -21,15 +21,9 @@ jobs:
           echo "SHA=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
           echo "URL=https://github.com/${{ github.repository }}/commit/$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Get list of changed files
-        id: changes
-        run: |
-          CHANGED=$(git diff-tree --no-commit-id --name-only -r ${{ steps.commit.outputs.SHA }})
-          echo "FILES=$CHANGED" >> $GITHUB_OUTPUT
-
       - name: Notify on Discord
         env:
           WEBHOOK_URL: https://discord.com/api/webhooks/1372272241219338300/tVhBkjEM8jNofPecLR-sVqgKJllUZSy90tl86MRFR3Un7p-P_CiitTn24j-ynOwG-nQL
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"content\": \"✅ **GitHub Pages deployed!**\n🔗 Commit: [View](${{ steps.commit.outputs.URL }})\n📄 Changed files:\n\`\`\`\n${{ steps.changes.outputs.FILES }}\n\`\`\`\"}" $WEBHOOK_URL
+          -d "{\"content\": \"✅ **GitHub Pages deployed successfully!**\n🌐 Visit your site:\n- https://www.therealorco.org\n- https://www.therealorco.org/share\"}" $WEBHOOK_URL
