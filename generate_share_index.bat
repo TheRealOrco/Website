@@ -1,5 +1,10 @@
-@echo off
+@echo on
 setlocal EnableDelayedExpansion
+
+echo Current directory:
+cd
+
+dir
 
 set "folder=share"
 set "output=%folder%\index.html"
