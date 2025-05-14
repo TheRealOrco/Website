@@ -43,7 +43,6 @@ for %%F in ("%folder%\*") do (
 >> "%output%" (
     echo     ^</ul^>
     echo     ^<div class="footer"^>Generated automatically via GitHub Actions^</div^>
-    echo     ^<div class="back-to-home"^>^<a href="https://therealorco.org">Back to Home</a^>^</div^>
     echo ^</body^>
     echo ^</html^>
 )
