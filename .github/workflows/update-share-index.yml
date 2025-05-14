@@ -6,6 +6,9 @@ on:
       - 'share/**'
       - 'generate_share_index.bat'
 
+permissions:
+  contents: write  # Grant write permission to push changes
+  
 jobs:
   build:
     runs-on: windows-latest
