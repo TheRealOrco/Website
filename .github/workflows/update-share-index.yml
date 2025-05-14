@@ -39,7 +39,7 @@ jobs:
         run: |
          curl -X POST -H "Content-Type: application/json" \
         -d "{\"content\": \"✅ GitHub Pages site updated and deployed!\"}" \
-        https://discord.com/api/webhooks/1372272241219338300/tVhBkjEM8jNofPecLR-sVqgKJllUZSy90tl86MRFR3Un7p-P_CiitTn24j-ynOwG-nQL
+         https://discord.com/api/webhooks/1372272241219338300/tVhBkjEM8jNofPecLR-sVqgKJllUZSy90tl86MRFR3Un7p-P_CiitTn24j-ynOwG-nQL
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
