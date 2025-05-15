@@ -23,7 +23,7 @@ jobs:
 
       - name: Notify on Discord
         env:
-          WEBHOOK_URL: https://discord.com/api/webhooks/1372272241219338300/tVhBkjEM8jNofPecLR-sVqgKJllUZSy90tl86MRFR3Un7p-P_CiitTn24j-ynOwG-nQL
+          WEBHOOK_URL: https://nothing
         run: |
           curl -X POST -H "Content-Type: application/json" \
           -d "{\"content\": \"✅ **GitHub Pages deployed successfully!**\n🔗 Commit: [View](${{ steps.commit.outputs.URL }})\n🌐 Visit your site:\n- https://www.therealorco.org\n- https://www.therealorco.org/share\"}" $WEBHOOK_URL
