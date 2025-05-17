@@ -7,22 +7,22 @@ on:
       - 'generate_share_index.bat'
 
 permissions:
-  contents: write  # Grant write permission to push changes
-  
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - name: Get latest commit message
-        id: commitmsg
-        run: |
-          msg=$(git log -1 --pretty=%B)
-          echo "msg<<EOF" >> $GITHUB_OUTPUT
-          echo "$msg" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
       - name: Checkout repo
         uses: actions/checkout@v4
+
+      - name: Get latest commit message
+        id: commitmsg
+        shell: powershell
+        run: |
+          $msg = git log -1 --pretty=%B
+          "msg=$msg" >> $env:GITHUB_OUTPUT
 
       - name: List directory contents
         run: dir
@@ -31,6 +31,7 @@ jobs:
         run: .\generate_share_index.bat
 
       - name: Commit and push updated index.html
+        shell: powershell
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
