@@ -1,5 +1,4 @@
-REM generate_share_index_nocache_timestamp_backtohome
-
+REM generate_share_index_nocache
 @echo off
 setlocal EnableDelayedExpansion
 
@@ -9,11 +8,6 @@ set "output=%folder%\index.html"
 if not exist "%folder%" (
     echo Folder "%folder%" does not exist.
     goto :eof
-)
-
-rem Get current date and time
-for /f "tokens=1-5 delims=/:. " %%a in ("%date% %time%") do (
-    set "stamp=%%a-%%b-%%c %%d:%%e"
 )
 
 > "%output%" (
@@ -34,9 +28,7 @@ for /f "tokens=1-5 delims=/:. " %%a in ("%date% %time%") do (
     echo         a {color:#90caf9;text-decoration:none;font-size:1.1rem;}
     echo         a:hover {text-decoration:underline;}
     echo         .footer {text-align:center;margin-top:3rem;font-size:0.9rem;color:#888;}
-    echo         .back-to-home {text-align:center;margin-top:2rem;}
-    echo         .back-to-home a {color:#ffffff;text-decoration:none;font-size:1.2rem;border:2px solid #ff9900;padding:0.5rem 1rem;border-radius:5px;transition:background-color 0.3s ease;}
-    echo         .back-to-home a:hover {background-color:#ff9900;color:#000;}
+    echo         .back-to-home a {color: #ffffff;text-decoration: none;font-size: 1.2rem;border: 2px solid #ff9900;padding: 0.5rem 1rem;border-radius: 5px;transition: background-color 0.3s ease;}
     echo     ^</style^>
     echo ^</head^>
     echo ^<body^>
@@ -54,8 +46,7 @@ for %%F in ("%folder%\*") do (
 
 >> "%output%" (
     echo     ^</ul^>
-    echo     ^<div class="back-to-home"^>^<a href="/"^>⬅ Back to Home^</a^>^</div^>
-    echo     ^<div class="footer"^>Generated automatically via GitHub Actions<br>Last updated: !stamp!^</div^>
+    echo     ^<div class="footer"^>Generated automatically via GitHub Actions^</div^>
     echo ^</body^>
     echo ^</html^>
 )
