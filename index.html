@@ -1,84 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheRealOrco World</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000610;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TheRealOrco World</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" href="favicon-32x32.png" sizes="32x32" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0a0a0a, #1a1a1a);
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        .header {
-            text-align: center;
-            padding: 2rem;
-            background-color: #333333;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-        .passions {
-            display: flex;
-            justify-content: space-around;
-            padding: 2rem;
-        }
-        .passion-item {
-            text-align: center;
-        }
-        .passion-icon {
-            font-size: 3rem;
-            color: #ff9900;
-        }
-        .passion-link {
-            color: #ffffff;
-            text-decoration: none;
-        }
-		        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon-16x16.png" sizes="16x16" >
-	<link rel="icon" href="favicon-32x32.png" sizes="32x32" >
+    .header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #111;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #f39c12;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #bbb;
+    }
+
+    a.passion-link {
+      color: #f39c12;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a.passion-link:hover {
+      color: #ffffff;
+    }
+
+    .passions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      background-color: #0d0d0d;
+    }
+
+    .passion-item {
+      background: #1c1c1c;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      width: 200px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 10px rgba(243, 156, 18, 0.2);
+    }
+
+    .passion-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(243, 156, 18, 0.4);
+    }
+
+    .passion-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      color: #f39c12;
+    }
+
+    img {
+      max-width: 300px;
+      height: auto;
+      display: block;
+      margin: 2rem auto;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #111;
+      color: #888;
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <h1>My Passionate World</h1>
-        <p>Exploring <a class="passion-link" href="https://example-gaming-site.com">Gaming</a>, <a class="passion-link" href="https://example-hardware-forum.com">PC Hardware</a>, and <a class="passion-link" href="https://example-software-repo.org">Software</a>!</p>
+  <div class="header">
+    <h1>My Passionate World</h1>
+    <p>
+      Exploring
+      <a class="passion-link" href="https://example-gaming-site.com">Gaming</a>,
+      <a class="passion-link" href="https://example-hardware-forum.com">PC Hardware</a>,
+      and
+      <a class="passion-link" href="https://example-software-repo.org">Software</a>!
+    </p>
+  </div>
+
+  <img src="TheRealOrco.jpeg" alt="My Cool Image" width="300" height="300" />
+
+  <div class="passions">
+    <div class="passion-item">
+      <span class="passion-icon">💻</span>
+      <p><a class="passion-link" href="https://www.therealorco.org/aboutme">About Me</a></p>
     </div>
-	<img src="TheRealOrco.jpeg" alt="My Cool Image" width="500" height="500">
-    <div class="passions">
-	<!--
-      <div class="passion-item">
-            <span class="passion-icon">🎮</span>
-            <p><a class="passion-link" href="https://www.therealorco.org/Gaming">Gaming Enthusiast</a></p>
-        </div>
-		-->
-        <div class="passion-item">
-            <span class="passion-icon">💻</span>
-            <p><a class="passion-link" href="https://www.therealorco.org/aboutme">About Me</a></p>
-        </div>
-		
-        <div class="passion-item">
-            <span class="passion-icon">📂</span>
-            <p><a class="passion-link" href="https://www.therealorco.org/share/">Shared Files</a></p>
-        </div>
-		
+    <div class="passion-item">
+      <span class="passion-icon">📂</span>
+      <p><a class="passion-link" href="https://www.therealorco.org/share/">Shared Files</a></p>
     </div>
-    <footer>
-        <p>Created with ❤️ by Or Cohen</p>
-    </footer>
+  </div>
+
+  <footer>
+    <p>Created with ❤️ by Or Cohen</p>
+  </footer>
 </body>
 </html>
