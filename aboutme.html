@@ -6,93 +6,98 @@
   <title>About Me</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #0a0a0a, #1a1a1a);
-      color: #e0e0e0;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #0a0a0a, #1a1a1a);
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
 
-    .header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: #111;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-    }
+.header {
+  text-align: center;
+  padding: 1.5rem 1rem; /* tighter than before */
+  background: #111;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
 
-    .header h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #f39c12;
-    }
+.header h1 {
+  font-size: 3rem;   /* back to large */
+  margin-bottom: 0.5rem;
+  color: #f39c12;
+}
 
-    .header p {
-      font-size: 1.2rem;
-      color: #bbb;
-    }
+.header p {
+  font-size: 1.2rem; /* back to normal */
+  color: #bbb;
+}
 
-    .container {
-      padding: 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-      background-color: #1c1c1c;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(243, 156, 18, 0.2);
-    }
+.container {
+  padding: 1rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(243, 156, 18, 0.2);
+  flex: 1;
+  overflow-y: auto; /* allows scroll only if content overflows */
+}
 
-    .container h1 {
-      font-size: 2.5rem;
-      color: #f39c12;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+.container h1 {
+  font-size: 2.5rem; /* larger */
+  color: #f39c12;
+  text-align: center;
+  margin-bottom: 1rem;
+}
 
-    .container p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 1.2rem;
-      color: #ccc;
-    }
+.container p {
+  font-size: 1.2rem; /* readable again */
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
 
-    .highlight {
-      color: #f39c12;
-      font-weight: bold;
-    }
+.highlight {
+  color: #f39c12;
+  font-weight: bold;
+}
 
-    .hardware-info {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      padding: 1.2rem;
-    }
+.hardware-info {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
 
-    .hardware-item {
-      background-color: #262626;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 204, 102, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.hardware-item {
+  background-color: #262626;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 204, 102, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .hardware-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(243, 156, 18, 0.4);
-    }
+.hardware-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(243, 156, 18, 0.4);
+}
 
-    .hardware-icon {
-      font-size: 3rem;
-      color: #f39c12;
-    }
+.hardware-icon {
+  font-size: 1.5rem; /* keep bold size */
+  color: #f39c12;
+}
 
-    .back-to-home {
-      text-align: center;
-      margin: 3rem 0;
-    }
-    .back-to-home {
+.hardware-icon-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.back-to-home {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -100,25 +105,21 @@
 }
 
 .back-to-home a {
-  font-size: 0.95rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  font-size: 1.1rem;
+  color: #f39c12;
+  border: 2px solid #f39c12;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-    .back-to-home a {
-      font-size: 1.1rem;
-      color: #f39c12;
-      border: 2px solid #f39c12;
-      text-decoration: none;
-      padding: 0.6rem 1.5rem;
-      border-radius: 8px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+.back-to-home a:hover {
+  background-color: #f39c12;
+  color: #000;
+}
 
-    .back-to-home a:hover {
-      background-color: #f39c12;
-      color: #000;
-    }
+	
   </style>
 </head>
 <body>
@@ -140,17 +141,13 @@
 
 
   <div class="hardware-info">
-    <div class="hardware-item">
-      <span class="hardware-icon">🔍</span>
-    </div>
-    <div class="hardware-item">
-      <span class="hardware-icon">🔧</span>
-    </div>
-    <div class="hardware-item">
-      <span class="hardware-icon">📊</span>
-    </div>
-  </div>
 
+  <div class="hardware-item">
+    <a href="cv.pdf" target="_blank" class="hardware-icon-link">
+      <span class="hardware-icon">🔍</span>
+    </a>
+  </div>
+</div>
   <div class="back-to-home">
     <a href="https://therealorco.org">Back to Home</a>
   </div>
